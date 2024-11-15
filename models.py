@@ -1,5 +1,5 @@
 from database import Base
-from sqlalchemy import Column, Integer, String, Boolean
+from sqlalchemy import Column, Integer, String, Boolean, ForeignKey
 
 class Users(Base):
     __tablename__ = 'users'
@@ -7,6 +7,8 @@ class Users(Base):
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String)
     email = Column(String, unique=True)
+    hashed_password = Column(String)
+    role = Column(String)
     is_active = Column(Boolean, default=0)
     
 
@@ -18,5 +20,5 @@ class Todos(Base):
     description = Column(String)
     priority = Column(Integer)
     is_completed = Column(Boolean, default=0)
-    
+    owner_id = Column(Integer, ForeignKey('users.id'))
 
