@@ -9,5 +9,5 @@ app.include_router(todos.router)
 app.include_router(users.router)
 
 # Create database
-models.Base.metadata.create_all(bind=engine)
+# models.Base.metadata.create_all(bind=engine)
 

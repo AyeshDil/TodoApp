@@ -10,6 +10,7 @@ class Users(Base):
     hashed_password = Column(String)
     role = Column(String)
     is_active = Column(Boolean, default=0)
+    phone_number = Column(String, nullable=True)
     
     def __repr__(self):
         return f'<User {self.name}>'
