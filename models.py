@@ -11,6 +11,21 @@ class Users(Base):
     role = Column(String)
     is_active = Column(Boolean, default=0)
     
+    def __repr__(self):
+        return f'<User {self.name}>'
+    
+    def __str__(self):
+        return f'<User {self.name}>'
+    
+    def __response__(self):
+        return {
+            'id': self.id,
+            'name': self.name,
+            'email': self.email,
+            'role': self.role,
+            'is_active': self.is_active
+        }
+    
 
 class Todos(Base):
     __tablename__ = 'todos'
@@ -21,4 +36,3 @@ class Todos(Base):
     priority = Column(Integer)
     is_completed = Column(Boolean, default=0)
     owner_id = Column(Integer, ForeignKey('users.id'))
-
